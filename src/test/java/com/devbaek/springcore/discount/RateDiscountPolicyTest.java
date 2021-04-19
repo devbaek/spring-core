@@ -2,12 +2,10 @@ package com.devbaek.springcore.discount;
 
 import com.devbaek.springcore.member.Grade;
 import com.devbaek.springcore.member.Member;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class RateDiscountPolicyTest {
 
@@ -34,7 +32,7 @@ class RateDiscountPolicyTest {
         int discount = discountPolicy.discount(memberA, 10000);
 
         // then
-        assertThat(discount).isEqualTo(0);
+        assertThat(discount).isZero();
     }
 
 }
