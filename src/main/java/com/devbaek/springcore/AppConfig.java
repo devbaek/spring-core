@@ -8,22 +8,29 @@ import com.devbaek.springcore.member.MemberServiceImpl;
 import com.devbaek.springcore.member.MemoryMemberRepository;
 import com.devbaek.springcore.order.OrderService;
 import com.devbaek.springcore.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AppConfig {
 
+    @Bean
     public MemberService memberService() {
-        return new MemberServiceImpl(getMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
+    @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    private DiscountPolicy getDiscountPolicy() {
+    @Bean
+    public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 
-    private MemberRepository getMemberRepository() {
+    @Bean
+    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 }
