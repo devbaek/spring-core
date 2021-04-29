@@ -2,7 +2,9 @@ package com.devbaek.springcore.discount;
 
 import com.devbaek.springcore.member.Grade;
 import com.devbaek.springcore.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 
     private int discountFixAmount = 1000;
