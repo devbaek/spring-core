@@ -1,10 +1,12 @@
 package com.devbaek.springcore.discount;
 
+import com.devbaek.springcore.annotation.MainDiscountPolicy;
 import com.devbaek.springcore.member.Grade;
 import com.devbaek.springcore.member.Member;
 import org.springframework.stereotype.Component;
 
 @Component
+@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private final int discountRate = 10;
