@@ -2,6 +2,7 @@ package com.devbaek.springcore.common;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -9,7 +10,7 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value = "request")
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Log4j2
 public class MyLogger {
 
@@ -21,7 +22,7 @@ public class MyLogger {
     }
 
     public void log(String message) {
-        log.info("[{}] [{}]{}", uuid, requestUrl, message);
+        log.info("[{}] [{}] {}", uuid, requestUrl, message);
     }
 
     @PostConstruct
